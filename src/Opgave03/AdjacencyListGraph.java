@@ -143,8 +143,16 @@ public class AdjacencyListGraph<V> implements Graph<V> {
      */
     @Override
     public Edge<V> addEdge(V u, V v, int weight) {
-        // TODO
-        return null;
+        assert vertices.contains(u) && vertices.contains(u);
+        Edge newEdge = new Edge(u,v,weight);
+        assert !edges.get(u).contains(newEdge);
+        assert weight >= 0;
+        edges.get(u).add(newEdge);
+        edges.get(v).add(newEdge);
+
+
+
+        return newEdge;
     }
 
     /**
@@ -153,8 +161,7 @@ public class AdjacencyListGraph<V> implements Graph<V> {
      */
     @Override
     public Edge<V> addEdge(V u, V v) {
-        // TODO
-        return null;
+     return addEdge(u,v,0);
     }
 
 
@@ -164,7 +171,11 @@ public class AdjacencyListGraph<V> implements Graph<V> {
      */
     @Override
     public void removeVertex(V v) {
-        // TODO
+        assert vertices.contains(v);
+        assert edges.get(v).isEmpty();
+
+        vertices.remove(v);
+        edges.remove(v);
     }
 
     /**
@@ -174,6 +185,12 @@ public class AdjacencyListGraph<V> implements Graph<V> {
      */
     @Override
     public void removeEdge(V u, V v) {
-        // TODO
+        Edge tempEdge = new Edge(u,v);
+        assert vertices.contains(v);
+        assert vertices.contains(u);
+        assert edges.get(v).contains(tempEdge);
+
+        edges.get(v).remove(tempEdge);
+        edges.get(u).remove(tempEdge);
     }
 }

@@ -1,4 +1,4 @@
-package Opgave03;
+package opgaver.Opgave01og02;
 
 public class Edge<V> {
     // vertices at the end of the edge

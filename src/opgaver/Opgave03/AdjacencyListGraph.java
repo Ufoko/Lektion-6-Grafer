@@ -1,11 +1,12 @@
-package Opgave03;
+package opgaver.Opgave03;
 
 import java.util.*;
+import opgaver.Graf;
 
 /**
  * Adjacency list implementation of the graph interface.
  */
-public class AdjacencyListGraph<V> implements Graph<V> {
+public class AdjacencyListGraph<V> implements Graph<V>, Graf<V> {
     // List with all the vertices in the graph.
     private List<V> vertices;
     // Map with pairs containing (vertex, list of edges),
@@ -38,14 +39,14 @@ public class AdjacencyListGraph<V> implements Graph<V> {
     public List<Edge<V>> edges() {
 
 
-        Set<Edge> edgesSet = new HashSet<Edge>();
+        HashSet<Edge<V>> edgesSet = new HashSet<Edge<V>>();
         for (List<Edge<V>> value : edges.values()) {
             for (Edge<V> vEdge : value) {
                 edgesSet.add(vEdge);
             }
         }
 
-        return new ArrayList<>(edgesSet);
+        return edgesSet.stream().toList();
     }
 
     /**
@@ -133,6 +134,7 @@ public class AdjacencyListGraph<V> implements Graph<V> {
         assert !vertices.contains(v);
 
         vertices.add(v);
+        edges.put(v,new ArrayList<Edge<V>>());
 
     }
 

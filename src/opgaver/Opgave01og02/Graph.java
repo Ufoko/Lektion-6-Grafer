@@ -1,10 +1,8 @@
-package Opgave01og02;
+package opgaver.Opgave01og02;
 
 import java.util.List;
 
 public interface Graph<V> {
-    /** Return a list with the vertices in the graph. */
-    List<V> vertices();
 
     /** Return a list with the edges in the graph. */
     List<Edge<V>> edges();

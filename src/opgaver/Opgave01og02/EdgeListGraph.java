@@ -1,4 +1,6 @@
-package Opgave01og02;
+package opgaver.Opgave01og02;
+
+import opgaver.Graf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.List;
 /**
  * Edge list implementation of the graph interface.
  */
-public class EdgeListGraph<V> implements Graph<V> {
+public class EdgeListGraph<V> implements Graph<V>, Graf<V> {
     // List with all the vertices in the graph.
     private List<V> vertices;
     // List with all the edges in the graph.

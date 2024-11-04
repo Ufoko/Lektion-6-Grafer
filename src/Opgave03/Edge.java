@@ -1,4 +1,4 @@
-package edgelistgraph;
+package Opgave03;
 
 public class Edge<V> {
     // vertices at the end of the edge

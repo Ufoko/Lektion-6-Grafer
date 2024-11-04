@@ -1,4 +1,4 @@
-package edgelistgraph;
+package Opgave03;
 
 import java.util.List;
 

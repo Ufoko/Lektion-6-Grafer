@@ -6,14 +6,57 @@ import opgaver.Opgave03.AdjacencyListGraph;
 public class Main {
     public static void main(String[] args) {
 
-        opgave1og02();
+      //  opgave1og02();
 
-        opgave3();
+      //  opgave3();
+
+        opgave3String();
+
+    }
+
+    private static void opgave3String() {
+        AdjacencyListGraph graf =  new AdjacencyListGraph();
+
+        graf.addVertex("Pølsemanden");
+        graf.addVertex("Aarhus");
+        graf.addVertex("Århus");
+        graf.addVertex("66");
+        graf.addVertex("6");
+
+        graf.addEdge("Pølsemanden", "Aarhus", 10);
+        graf.addEdge("Pølsemanden", "6", 23);
+        graf.addEdge("Pølsemanden", "66", 90);
+        graf.addEdge("6", "66", 8);
+        graf.addEdge("6", "Århus", 7);
+        graf.addEdge("66", "Århus", 76);
+        graf.addEdge("Århus", "Aarhus", 55);
+        graf.addEdge("Aarhus", "66", 2);
+
+
+//        graf.removeEdge("66","Pølsemanden");
+//        graf.removeEdge("Pølsemanden","6");
+//        graf.removeEdge("Pølsemanden","Aarhus");
+//     //   graf.removeVertex("Pølsemanden");
+
+        graf.printGraph();
+
+
+        System.out.println(graf.degree("6"));
+        System.out.println(graf.incidentEdges("6"));
+        System.out.println(graf.neighbors("6"));
+
+        System.out.println(graf.neighbors("6").contains("66"));
+        System.out.println(graf.neighbors("6").contains("Aarhus"));
+
+
+        System.out.println(findLargest(graf));
+
+
 
     }
 
     private static void opgave3() {
-        AdjacencyListGraph graf = new AdjacencyListGraph();
+        AdjacencyListGraph<Integer> graf = new AdjacencyListGraph();
 
         graf.addVertex(15);
         graf.addVertex(38);
@@ -53,7 +96,7 @@ public class Main {
     }
 
     private static void opgave1og02() {
-        EdgeListGraph graf = new EdgeListGraph();
+        EdgeListGraph<Integer> graf = new EdgeListGraph();
 
         graf.addVertex(15);
         graf.addVertex(38);
@@ -90,8 +133,12 @@ public class Main {
     }
 
 
-    public static int findLargest(Graf graf) {
-      return (int) graf.vertices().stream().max((a, b) -> (int) a - (int) b).get();
+//    public static int findLargest(Graf graf) {
+//      return (int) graf.vertices().stream().max(Comparable::compareTo).get();
+//    }
+
+    public static <V extends Comparable<V>> V findLargest(Graf<V> graf){
+        return graf.vertices().stream().max((a, b) -> a.compareTo(b)).get();
     }
 
 

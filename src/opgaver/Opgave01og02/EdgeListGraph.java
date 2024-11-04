@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Edge list implementation of the graph interface.
  */
-public class EdgeListGraph<V> implements Graph<V>, Graf<V> {
+public class EdgeListGraph<V extends Comparable> implements Graph<V>, Graf<V> {
     // List with all the vertices in the graph.
     private List<V> vertices;
     // List with all the edges in the graph.

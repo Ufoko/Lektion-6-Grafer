@@ -6,7 +6,7 @@ import opgaver.Graf;
 /**
  * Adjacency list implementation of the graph interface.
  */
-public class AdjacencyListGraph<V> implements Graph<V>, Graf<V> {
+public class AdjacencyListGraph<V extends Comparable> implements Graph<V>, Graf<V> {
     // List with all the vertices in the graph.
     private List<V> vertices;
     // Map with pairs containing (vertex, list of edges),
@@ -23,6 +23,8 @@ public class AdjacencyListGraph<V> implements Graph<V>, Graf<V> {
         vertices = new ArrayList<>();
         edges = new LinkedHashMap<>();
     }
+
+   
 
     /**
      * Return a list with the vertices in the graph.
